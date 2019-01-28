@@ -1,49 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 
-$primary-color-dark: #1A1A1D;
-$primary-color-light: #EEEEEE;
-
-@mixin font-size-weight($size,$weight){
-	font-size: $size+px;
-	font-weight: $weight;
-}
-
-@keyframes scale-up-ver-bottom {
-  0% {
-    transform: scaleY(0.4);
-    transform-origin: 0% 100%;
-  }
-  100% {
-    transform: scaleY(1);
-    transform-origin: 0% 100%;
-  }
-}
-
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(-1000px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-
-body{
-	margin: 0;
-	box-sizing: border-box;	
-	font-family: 'Montserrat', 'Verdana', sans-serif;
-}
-
-*, *::before, *::after{
-	margin: 0;
-	padding: 0;
-	box-sizing: inherit;
-}
-
-li{
-	list-style-type: none;
-}
+@import 'config';
+@import 'normalize';
 
 #container{
 	height: 100vh;
@@ -75,13 +33,14 @@ li{
 	}
 	
 	.nav-selected{
-		@include font-size-weight( 30, 600);
+		font-weight: 600;
 		opacity: 1;
 	}
 }
 
 main{
 	position: relative;
+	background-color: $primary-color-light;	
 }
 
 // RIGHT BAR
@@ -94,12 +53,24 @@ section{
 	opacity: 0;
 	visibility: hidden;
 	background-color: $primary-color-light;
-	transition: all .8s cubic-bezier(0.215, 0.490, 0.470, 1.000);
+	color: $primary-color-dark;
+	text-align: center;
+	transform: translateY(1000px);
+	transition: transform .6s cubic-bezier(0.215, 0.490, 0.470, 1.000),
+							visibility .6s cubic-bezier(0.215, 0.490, 0.470, 1.000),
+							opacity .3s ease-in;
+	display: grid;
+	align-content: center;
+	justify-content: center;
 	// SELECTED CONTAINER
 	&.main-selected{
 		visibility: visible;
 		opacity: 1;
-		animation: slide-in-left .6s cubic-bezier(0.215, 0.490, 0.470, 1.000) both;
+		transform: translateY(0);
+		.red{
+			width: $contact-box;
+			transition: width .6s ease-in .5s;
+		}
 	}
 }
 
@@ -110,10 +81,95 @@ section#home{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	display: grid;
-	align-content: center;
-	justify-content: center;
 	h1{
 		@include font-size-weight( 90, 500 );
+	}
+}
+
+// ABOUT CONTAINER
+section#about{
+	span{
+		color: $primary-color-red;
+	}
+	#about-headline{
+		@include font-size-weight( 65, 600);
+	}
+	#about-desc{
+		@include font-size-weight( 30, 400);
+	}
+}
+
+// SKILLS CONTAINER
+
+section#skills{
+	justify-content: space-around;
+	grid-template-columns: repeat(2, 450px);
+	.skills-container{
+		// background-color: $primary-color-red;
+		// border: 2px solid black;
+		padding: 15px;
+	}
+	.skills-left{
+		h2{
+			@include font-size-weight( 25, 600);
+			margin-bottom: 25px;
+		}
+		p{
+			@include font-size-weight( 17, 400);
+			line-height: 1.2;
+			&:first-of-type{
+				margin-bottom: 20px;
+			}
+		}
+	}
+	.skills-right{
+		display: grid;
+		align-content: space-between;
+		.bar{
+			background-color: #fff;
+			height: 40px;
+			position: relative;
+			box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.25);
+			span{
+				position: absolute;
+				top: 20%;
+				left: 7px;
+				color: $primary-color-light;
+				@include font-size-weight( 20, 700);
+			}
+			.progress{
+				background: linear-gradient(to bottom, $primary-color-red 0%,$primary-color-red-darker 100%);
+				height: 100%;
+				box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.25);
+			}
+		}
+	}
+}
+
+// CONTACT CONTAINER
+
+section#contact{
+	h1{
+		@include font-size-weight( 35, 700);
+	}
+}
+
+.contact-desc{
+	position: relative;
+	height: $contact-box;
+	width: $contact-box*10;
+	background-color: #fff;
+	margin: $contact-box 0;
+	@include font-size-weight( 25, 600);
+	.red{
+		float: left;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background-color: $primary-color-red;
+	}
+	.info{
+		line-height: $contact-box;
+		padding-left: $contact-box;
 	}
 }
