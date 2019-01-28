@@ -8,6 +8,9 @@
 	display: grid;
 	grid-template-columns: 270px 1fr;
 	overflow: hidden;
+	@include mobile{
+		grid-template-columns: 1fr;
+	}
 }
 
 // LEFT BAR
@@ -21,8 +24,28 @@
 	align-content: space-between;
 	position: relative;
 	z-index: 1;
+	@include mobile{
+		height: 50px;
+		padding: 15px;
+		align-content: center;
+		img{
+			align-self: center;
+			justify-self: end;
+			position: absolute;
+			right: 5px;
+			height: 20px;
+			width: 20px;
+		}
+		.nav-list{
+			display: grid;
+			grid-template-columns: repeat(4,1fr);
+		}
+	}
 	h1{
 		@include font-size-weight( 37, 700);
+		@include mobile{
+			display: none;
+		}
 	}
 	
 	.nav-element{
@@ -30,6 +53,10 @@
 		opacity: 0.7;
 		margin: 30px 0;
 		cursor: pointer;
+		@include mobile{
+			margin: 0;
+			@include font-size-weight(17, 300);
+		}
 	}
 	
 	.nav-selected{
@@ -40,7 +67,10 @@
 
 main{
 	position: relative;
-	background-color: $primary-color-light;	
+	background-color: $primary-color-light;
+	@include mobile{
+		height: 100vh;
+	}
 }
 
 // RIGHT BAR
@@ -83,19 +113,33 @@ section#home{
 	background-position: center;
 	h1{
 		@include font-size-weight( 90, 500 );
+		@include mobile{
+			@include font-size-weight( 60, 500);
+		}
 	}
 }
 
 // ABOUT CONTAINER
 section#about{
+	@include mobile{
+		.about-container{
+			padding: 15px;
+		}
+	}
 	span{
 		color: $primary-color-red;
 	}
 	#about-headline{
 		@include font-size-weight( 65, 600);
+		@include mobile{
+			@include font-size-weight( 35, 600);
+		}
 	}
 	#about-desc{
 		@include font-size-weight( 30, 400);
+		@include mobile{
+			@include font-size-weight( 16, 400);
+		}
 	}
 }
 
@@ -103,13 +147,23 @@ section#about{
 
 section#skills{
 	justify-content: space-around;
-	grid-template-columns: repeat(2, 450px);
+	grid-template-columns: repeat(2, minmax(380px, 30%));
+	overflow: scroll;
+	@include mobile{
+		align-content: start;
+		justify-content: center;
+		grid-template-columns: 80%;
+		
+	}
 	.skills-container{
 		// background-color: $primary-color-red;
 		// border: 2px solid black;
 		padding: 15px;
 	}
 	.skills-left{
+		@include mobile{
+			margin-top: 20px;
+		}
 		h2{
 			@include font-size-weight( 25, 600);
 			margin-bottom: 25px;
@@ -125,6 +179,12 @@ section#skills{
 	.skills-right{
 		display: grid;
 		align-content: space-between;
+		grid-gap: 15px;
+		@include mobile{
+			grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+			grid-gap: 10px;
+			margin-bottom: 55px;
+		}
 		.bar{
 			background-color: #fff;
 			height: 40px;
@@ -151,6 +211,19 @@ section#skills{
 section#contact{
 	h1{
 		@include font-size-weight( 35, 700);
+		@include mobile{
+			display: none;
+		}
+	}
+	@include mobile{
+		.contact-container{
+			padding: 15px;
+			display: grid;
+			grid-template-columns: 1fr;
+			justify-items: center;
+			justify-content: center;
+			grid-gap: 20px;
+		}
 	}
 }
 
@@ -161,15 +234,29 @@ section#contact{
 	background-color: #fff;
 	margin: $contact-box 0;
 	@include font-size-weight( 25, 600);
+	@include mobile{
+		width: 100%;
+		margin: 0;
+		height: auto;
+		@include font-size-weight( 17, 600);
+		display: grid;
+		grid-template-columns: $contact-box 1fr;		
+	}
 	.red{
 		float: left;
 		position: absolute;
 		height: 100%;
 		width: 100%;
 		background-color: $primary-color-red;
+		@include mobile{
+			position: relative;
+		}
 	}
 	.info{
 		line-height: $contact-box;
 		padding-left: $contact-box;
+		@include mobile{
+			padding: 0 10px;
+		}
 	}
 }

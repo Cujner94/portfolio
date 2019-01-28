@@ -4,8 +4,15 @@ $primary-color-light-darker: darken($primary-color-light, 10%);
 $primary-color-red: #C3073F;
 $primary-color-red-darker: darken($primary-color-red, 10%);
 $contact-box: 55px;
+$mobile: 1020px;
 
 @mixin font-size-weight($size,$weight){
 	font-size: $size+px;
 	font-weight: $weight;
+}
+
+@mixin mobile{
+	@media(max-width: #{$mobile}){
+		@content;
+	}
 }
