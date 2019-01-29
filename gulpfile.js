@@ -4,6 +4,7 @@ const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
+const autoprefixer = require('gulp-autoprefixer');
 
 // START THE BROWSER SYNC SERVER
 function startServer(done) {
@@ -33,6 +34,7 @@ function transpileJs(){
 function transpileSass() {
 	return src('src/scss/*.scss')
 	.pipe(sass().on('error', sass.logError))
+	.pipe(autoprefixer())
 	.pipe(cleanCSS())
 	.pipe(dest('dist/css/'))
 }

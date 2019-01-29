@@ -18,12 +18,9 @@ navMain.addEventListener('click', (e) => {
 			if (e.classList.contains('main-selected')) {
 				e.classList.remove('main-selected');
 			}
-		})
-		
-		sectionArray.forEach((e) => {
 			if (e.id === selector) {
 				e.classList.add('main-selected');
 			}
-		})
+		})	
 	}
 })
