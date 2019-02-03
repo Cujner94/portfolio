@@ -13,6 +13,8 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="msapplication-config" content="/public/icons/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/brands.css" integrity="sha384-BKw0P+CQz9xmby+uplDwp82Py8x1xtYPK3ORn/ZSoe6Dk3ETP59WCDnX+fI1XCKK" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">
 	<link rel="stylesheet" href="./css/main.css">
 	<title>Nikola Kujundzic</title>
 </head>
@@ -32,7 +34,7 @@
 		
 		<main id="main">
 			
-			<section class="main-section main-selected" id="home">
+			<section class="main-section " id="home">
 				<h1>Welcome</h1>
 			</section>
 			
@@ -105,32 +107,25 @@
 				</div>
 			</section>
 			
-			<section class="main-section " id="contact">
-				<h1>Feel free to contact me :)</h1>
-				<div class="contact-container">
-					<div class="contact-desc">
-						<div class="red"></div>
-						<div class="info">
-							<p>
-								nikolacujo.dev@gmail.com
-							</p>
-						</div>
-					</div>
-					<div class="contact-desc">
-						<div class="red"></div>
-						<div class="info">
-							<p>
-								linkedin.com/in/nikola-kujundzic
-							</p>
-						</div>
-					</div>
-					<div class="contact-desc">
-						<div class="red"></div>
-						<div class="info">
-							<p>
-								+381 61 292 33 55
-							</p>
-						</div>
+			<section class="main-section main-selected" id="contact">
+				<div id="contact-container">
+					<h1>Feel free to contact me</h1>
+					<form action="https://formspree.io/nikolacujo.dev@gmail.com" method="POST" id="contact-form">
+						<input class="input-text" placeholder="Name" type="text" name="name" id="input-text" required>
+						<input class="input-text" placeholder="Enter email" type="email" name="email" id="input-email" required>
+						<textarea class="input-text" placeholder="Your Message" name="message" id="input-textarea"></textarea>
+						<input type="submit" value="Submit" id="input-submit">
+					</form>
+					<div class="icons">
+						<a href="https://www.linkedin.com/in/nikola-kujundzic">
+							<div class="icon-container"><i class="fab fa-linkedin-in"></i></div>
+						</a>
+						<a href="https://github.com/nikola-cujo">
+							<div class="icon-container"><i class="fab fa-github"></i></div>
+						</a>
+						<a href="https://www.facebook.com/nikolacujo.kujundzic">
+							<div class="icon-container"><i class="fab fa-facebook-square"></i></div>
+						</a>
 					</div>
 				</div>
 			</section>

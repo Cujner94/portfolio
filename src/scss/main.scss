@@ -53,7 +53,11 @@
 		@include font-size-weight( 30, 300);
 		opacity: 0.7;
 		margin: 30px 0;
+		transition: transform .2s ease-in;
 		cursor: pointer;
+		&:hover{
+			transform: scale(1.2);
+		}
 		@include mobile{
 			margin: 0;
 			@include font-size-weight(17, 300);
@@ -98,10 +102,6 @@ section{
 		visibility: visible;
 		opacity: 1;
 		transform: translateY(0);
-		.red{
-			width: $contact-box;
-			transition: width .6s ease-in .5s;
-		}
 	}
 }
 
@@ -210,54 +210,75 @@ section#skills{
 // CONTACT CONTAINER
 
 section#contact{
+	grid-template-columns: 32%;
+	@include mobile{
+		grid-template-columns: 60%;
+	}
 	h1{
-		@include font-size-weight( 35, 700);
+		@include font-size-weight( 27, 700);
+		margin-bottom: 20px;
 		@include mobile{
 			display: none;
 		}
 	}
-	@include mobile{
-		.contact-container{
-			padding: 15px;
-			display: grid;
-			grid-template-columns: 1fr;
-			justify-items: center;
-			justify-content: center;
-			grid-gap: 20px;
+}
+
+#contact-form{
+	width: 100%;
+	input, textarea{
+		display: block;
+		&:focus{
+			outline: 2px solid $primary-color-red;
+		}
+		&#input-textarea{
+			height: 120px;
+		}
+	}
+	.input-text{
+		width: 100%;
+		padding: 15px 10px;
+		background: lighten($primary-color-light, 5%);
+		box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);
+		margin-bottom: 5px;
+		border: 0;
+	}
+	#input-submit{
+		float: right;
+		padding: 10px 25px;
+		@include font-size-weight( 15, 600);
+		color: $primary-color-dark;
+		background: transparent;
+		border: 3px solid $primary-color-red;
+		margin-top: 7px;
+		cursor: pointer;
+		transition: all .2s ease-in;
+		&:hover, &:focus{
+			box-shadow: inset 0 -3.25em 0 0 $primary-color-red;
+			color: $primary-color-light;
 		}
 	}
 }
 
-.contact-desc{
-	position: relative;
-	height: $contact-box;
-	width: $contact-box*10;
-	background-color: #fff;
-	margin: $contact-box 0;
-	@include font-size-weight( 25, 600);
-	@include mobile{
-		width: 100%;
-		margin: 0;
-		height: auto;
-		@include font-size-weight( 17, 600);
-		display: grid;
-		grid-template-columns: $contact-box 1fr;		
-	}
-	.red{
-		float: left;
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		background-color: $primary-color-red;
-		@include mobile{
-			position: relative;
-		}
-	}
-	.info{
-		line-height: $contact-box;
-		padding-left: $contact-box;
-		@include mobile{
-			padding: 0 10px;
+.icons{
+	margin-top: 70px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 55px);
+	justify-content: center;
+	align-content: center;
+	grid-gap: 15px;
+	font-size: 30px;
+	.icon-container{
+		background: lighten($primary-color-light, 5%);
+		box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.4);
+		color: $primary-color-red-darker;
+		padding: 10px;
+		width: 55px;
+		height: 55px;
+		transition: all .3s cubic-bezier(0.145, 0.645, 0.805, 0.510);
+		&:hover{
+			background: $primary-color-red-darker;
+			color: lighten($primary-color-light, 5%);
+			transform: scale(0.9);
 		}
 	}
 }

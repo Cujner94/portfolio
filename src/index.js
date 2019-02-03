@@ -1,5 +1,6 @@
 const navMain = document.querySelector('.nav-list');
 const sectionMain = document.querySelector('#main');
+const form = document.getElementById('contact-form');
 let navArray = [...navMain.children];
 let sectionArray = [...sectionMain.children];
 let wheelTimeout;
