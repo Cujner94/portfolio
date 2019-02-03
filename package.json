@@ -10,7 +10,9 @@
   "license": "MIT",
   "homepage": "https://cujner94.github.io/portfolio",
   "browserslist": [
-    "defaults"
+    "last 2 versions",
+    "> 1%",
+    "ie 11"
   ],
   "devDependencies": {
     "@babel/core": "^7.2.2",
