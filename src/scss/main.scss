@@ -170,9 +170,10 @@ section#skills{
 			margin-bottom: 25px;
 		}
 		p{
-			@include font-size-weight( 17, 400);
+			@include font-size-weight( 19, 400);
 			line-height: 1.2;
-			&:first-of-type{
+			text-align: left;
+			&:not(:last-of-type){
 				margin-bottom: 20px;
 			}
 		}
