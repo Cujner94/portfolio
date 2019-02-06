@@ -5,6 +5,7 @@ const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
+const imagemin = require('gulp-imagemin');
 
 // START THE BROWSER SYNC SERVER
 function startServer(done) {
@@ -39,10 +40,17 @@ function transpileSass() {
 	.pipe(dest('dist/css/'))
 }
 
+// MINIFY IMAGES
+function imageMin() {
+	return src('src/public/*.jpg')
+		.pipe(imagemin())
+		.pipe(dest('dist/public/'))
+}
+
 // WATHCING FOR CHANGES
 watch('src/*.js', series(transpileJs, reload));
 watch('src/scss/*.scss', series(transpileSass, reload));
 watch('dist/*.html', reload)
 
 // DEFAULT TASK 
-exports.default = series( parallel(transpileJs, transpileSass), startServer);
+exports.default = series( parallel(transpileJs, transpileSass, imageMin), startServer);
